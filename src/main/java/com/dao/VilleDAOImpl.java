@@ -117,8 +117,8 @@ public class VilleDAOImpl implements VilleDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return listVille;
+		
 	}
 	
 	
@@ -155,14 +155,37 @@ public class VilleDAOImpl implements VilleDAO {
 
 	}
 	
+	public void updateVille(Ville ville, String codeCommune){
+		Connection connexion = null;
+		//Statement statement = null;
+		//ResultSet resultat = null;
+		PreparedStatement preparedStmt = null;
+		try {
+			connexion = JDBCConf.getConnection();
+			preparedStmt = connexion.prepareStatement("UPDATE ville_france SET Code_Commune_INSEE = ?, Nom_Commune = ?, Code_postal = ?, Libelle_acheminement = ?, Ligne_5 = ?, Latitude = ?, Longitude = ? where Code_Commune_INSEE = ?");    
+			preparedStmt.setString(1, ville.getCodeCommune());
+			preparedStmt.setString(2, ville.getNom_commune());
+			preparedStmt.setString(3, ville.getCode_postal());
+			preparedStmt.setString(4, ville.getLibelle_acheminement());
+			preparedStmt.setString(5, ville.getLigne_5());
+			preparedStmt.setString(6, ville.getLatitude());
+			preparedStmt.setString(7, ville.getLongitude());
+			preparedStmt.setString(8, codeCommune);
+			preparedStmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void deleteVille(String code_commune_INSEE) {
 		Connection connexion = null;
-		Statement statement = null;
+		PreparedStatement preparedStmt = null;
 
 		try {
 			connexion = JDBCConf.getConnection();
-			statement = connexion.createStatement();
-			statement.executeUpdate("DELETE FROM ville_france WHERE Code_commune_INSEE='" + code_commune_INSEE + "';");
+			preparedStmt = connexion.prepareStatement("DELETE FROM ville_france WHERE Code_commune_INSEE=?");
+			preparedStmt.setString(1, code_commune_INSEE);
+			preparedStmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

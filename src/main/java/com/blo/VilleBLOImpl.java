@@ -35,11 +35,18 @@ public class VilleBLOImpl implements VilleBLO {
 	}
 	
 	public void addVille(Ville ville) {
+		init();
 		villeDAO.addVille(ville);
 	}
 	
 	public void deleteVille(String code_commune_INSEE) {
+		init();
 		villeDAO.deleteVille(code_commune_INSEE);
+	}
+	
+	public void updateVille(Ville ville, String codeCommune) {
+		init();
+		villeDAO.updateVille(ville, codeCommune);
 	}
 
 }

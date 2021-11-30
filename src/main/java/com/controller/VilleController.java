@@ -64,10 +64,17 @@ public class VilleController {
 	}
 	
 	@RequestMapping(value = "/ville", method = RequestMethod.DELETE)
-	public void appelDelete(@RequestParam(required = true, value = "nom_commune_INSEE") String nom_commune_INSEE) {
+	public void appelDelete(@RequestParam(required = true, value = "code_commune_INSEE") String code_commune_INSEE) {
 		System.out.println("Appel DELETE");
-		villeService.deleteVille(nom_commune_INSEE);
+		villeService.deleteVille(code_commune_INSEE);
 		logger.info("ville supprimée");	
+	}
+	
+	@RequestMapping(value = "/ville", method = RequestMethod.PUT)
+	public void appelPut(@RequestBody Ville ville, @RequestParam(required = true, value = "codeCommune") String codeCommune) {
+		System.out.println("Appel PUT");
+		villeService.updateVille(ville, codeCommune);
+		logger.info("ville modifiée");
 	}
 }
 
