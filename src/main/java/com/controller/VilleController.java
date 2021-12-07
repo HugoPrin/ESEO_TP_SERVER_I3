@@ -31,8 +31,8 @@ public class VilleController {
 //	}
 	
 	@RequestMapping(value = "/ville", method = RequestMethod.GET) 
-	@ResponseBody public ArrayList<Ville> appelGet(@RequestParam(required = false, value = "nom_Commune") String nom_Commune) { 
-		return villeService.getALLInfovilles(nom_Commune);
+	@ResponseBody public ArrayList<Ville> appelGet(@RequestParam(required = false, value = "codeCommune") String codeCommune) { 
+		return villeService.getALLInfovilles(codeCommune);
 	
 	}
 //	

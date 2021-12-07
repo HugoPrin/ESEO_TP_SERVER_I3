@@ -14,7 +14,7 @@ public interface VilleDAO {
 	
 	void deleteVille(String code_commune_INSEE);
 
-	ArrayList<Ville> findSpecificVille(String nom_Commune);
+	ArrayList<Ville> findSpecificVille(String codeCommune);
 	
 	void updateVille(Ville ville, String codeCommune);
 }
