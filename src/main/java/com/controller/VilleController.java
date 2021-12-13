@@ -22,38 +22,13 @@ public class VilleController {
 	@Autowired
 	private VilleBLO villeService;
 	
-//	@RequestMapping(value = "/ville", method = RequestMethod.GET)
-//	@ResponseBody
-//	public Ville appelGet(@RequestParam(required = false, value = "codePostal") String codePostal) {
-//		System.out.println("code postal : " + codePostal);
-//		return villeService.getInfovilles();
-//
-//	}
 	
 	@RequestMapping(value = "/ville", method = RequestMethod.GET) 
 	@ResponseBody public ArrayList<Ville> appelGet(@RequestParam(required = false, value = "codeCommune") String codeCommune) { 
 		return villeService.getALLInfovilles(codeCommune);
 	
 	}
-//	
-//	
-//	@RequestMapping(value = "/ville", method = RequestMethod.POST) 
-//	@ResponseBody public String addPost(@RequestParam String codeCommune) { 
-//		Ville ville = new Ville(codeCommune); 
-//		ville.setCodeCommune(codeCommune);
-//		System.out.println("ville ajoutée");
-//		return "ville ajoutée";
-//	
-//	}
-	 
-//	@RequestMapping(value = "/ville", method = RequestMethod.GET)
-//	@ResponseBody
-//	public ArrayList<Ville> appelGet() {
-//		System.out.println("Appel GET");
-//		villeService.getALLInfovilles();
-//		
-//		return villeService.getALLInfovilles();
-//	}
+
 	
 	
 	@RequestMapping(value = "/ville", method = RequestMethod.POST)
